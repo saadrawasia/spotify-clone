@@ -1,17 +1,18 @@
-'use client';
-import { usePathname } from 'next/navigation';
-import { useMemo } from 'react';
-import { HiHome } from 'react-icons/hi';
-import { BiSearch } from 'react-icons/bi';
-import Box from './Box';
-import SidebarItem from './SidebarItem';
+'use client'
+import { usePathname } from 'next/navigation'
+import { useMemo } from 'react'
+import { HiHome } from 'react-icons/hi'
+import { BiSearch } from 'react-icons/bi'
+import Box from './Box'
+import SidebarItem from './SidebarItem'
+import Library from './Library'
 
 interface SidebarProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ children }) => {
-  const pathname = usePathname();
+  const pathname = usePathname()
   const routes = useMemo(
     () => [
       {
@@ -28,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
       },
     ],
     [pathname]
-  );
+  )
   return (
     <div className="flex h-full">
       <div className="hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2">
@@ -39,11 +40,13 @@ const Sidebar: React.FC<SidebarProps> = ({ children }) => {
             ))}
           </div>
         </Box>
-        <Box className="overflow-y-auto h-screen">Song Library</Box>
+        <Box className="overflow-y-auto h-screen">
+          <Library />
+        </Box>
       </div>
       <main className="h-full flex-1 overflow-y-auto py-2">{children}</main>
     </div>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar
